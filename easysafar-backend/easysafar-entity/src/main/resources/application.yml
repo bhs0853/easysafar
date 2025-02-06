@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: easysafar-entity
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/easysafar
+    username: root
+    password: ${MY_SQL_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  data:
+    jdbc:
+      dialect: mysql
