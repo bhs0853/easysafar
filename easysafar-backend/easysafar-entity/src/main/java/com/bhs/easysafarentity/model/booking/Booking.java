@@ -18,16 +18,16 @@ import lombok.experimental.SuperBuilder;
 public class Booking extends BaseModel {
 
     @ManyToOne
-    public Passenger passenger;
+    private Passenger passenger;
 
     @ManyToOne
-    public Driver driver;
+    private Driver driver;
 
     @ManyToOne
-    public ExactLocation startLocation;
+    private ExactLocation startLocation;
 
     @ManyToOne
-    public ExactLocation endLocation;
+    private ExactLocation endLocation;
 
     @Column(name = "status", nullable = false)
     @Enumerated(value = EnumType.STRING)

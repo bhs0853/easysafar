@@ -1,12 +1,10 @@
 package com.bhs.easysafarentity.model.driver;
 
 import com.bhs.easysafarentity.model.BaseModel;
+import com.bhs.easysafarentity.model.booking.Booking;
 import com.bhs.easysafarentity.model.car.Car;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,13 +23,13 @@ import java.util.List;
 public class Driver extends BaseModel implements UserDetails {
 
     @Column(name = "name", nullable = false)
-    public String name;
+    private String name;
 
     @Column(name = "email", nullable = false)
-    public String email;
+    private String email;
 
     @Column(name = "mobile_number", nullable = false)
-    public String mobileNumber;
+    private String mobileNumber;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -39,13 +37,16 @@ public class Driver extends BaseModel implements UserDetails {
     @OneToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     @JsonIgnoreProperties(value = "driver")
-    public Car car;
+    private Car car;
 
     @Column(name = "rating")
-    public Double rating;
+    private Double rating;
 
     @Column(name = "license_number", nullable = false)
-    public String licenseNumber;
+    private String licenseNumber;
+
+    @OneToMany
+    private List<Booking> bookingHistory;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -26,14 +26,14 @@ public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Cascade({CascadeType.PERSIST,CascadeType.REMOVE})
-    private String id;
+    protected String id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    private Date created_at;
+    protected Date created_at;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
-    private Date updated_at;
+    protected Date updated_at;
 
 }
