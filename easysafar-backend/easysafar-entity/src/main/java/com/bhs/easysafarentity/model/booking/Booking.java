@@ -4,6 +4,7 @@ import com.bhs.easysafarentity.model.BaseModel;
 import com.bhs.easysafarentity.model.driver.Driver;
 import com.bhs.easysafarentity.model.location.ExactLocation;
 import com.bhs.easysafarentity.model.passenger.Passenger;
+import com.bhs.easysafarentity.model.review.Review;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,10 @@ public class Booking extends BaseModel {
 
     @Column(name = "status", nullable = false)
     @Enumerated(value = EnumType.STRING)
-    public BookingStatus status;
+    private BookingStatus status;
+
+    @OneToOne
+    @JoinColumn(name = "review_id", referencedColumnName = "id")
+    private Review review;
 
 }
